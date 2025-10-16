@@ -2,6 +2,10 @@ import os
 import pymysql
 from urllib.request import urlopen
 
+# Risk 1: Secrets are hard-coded in the file; anyone with repo access can see them. 
+# (OWASP A07: Identification & Authentication Failures)
+# Risk 2: Using an "admin" DB user breaks least-privilege; if compromised, damage is higher. 
+# (OWASP A05: Security Misconfiguration)
 db_config = {
     'host': 'mydatabase.com',
     'user': 'admin',
